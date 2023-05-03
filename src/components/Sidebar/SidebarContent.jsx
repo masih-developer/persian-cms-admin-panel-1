@@ -18,6 +18,24 @@ import {
     ViewQuiltOutlined as ViewQuiltOutlinedIcon,
     LocalOfferOutlined as LocalOfferOutlinedIcon,
 } from "@mui/icons-material";
+import { NavLink as NavLinkRouter } from "react-router-dom";
+
+const allLinks = [
+    { icon: <HomeIcon sx={{ color: "#fff" }} />, text: "صفحه ی اصلی", path: "/" },
+    { icon: <Inventory2OutlinedIcon sx={{ color: "#fff" }} />, text: "محصولات", path: "/products" },
+    {
+        icon: <InsertCommentOutlinedIcon sx={{ color: "#fff" }} />,
+        text: "کامنت ها",
+        path: "/comments",
+    },
+    { icon: <GroupOutlinedIcon sx={{ color: "#fff" }} />, text: "کاربران", path: "/users" },
+    { icon: <ViewQuiltOutlinedIcon sx={{ color: "#fff" }} />, text: "سفارشات", path: "/orders" },
+    {
+        icon: <LocalOfferOutlinedIcon sx={{ color: "#fff" }} />,
+        text: "تخفیف ها",
+        path: "/discounts",
+    },
+];
 
 const SidebarContent = () => {
     return (
@@ -56,96 +74,21 @@ const SidebarContent = () => {
             </Toolbar>
             <Divider />
             <List disablePadding sx={{ mt: "20px" }}>
-                <ListItem disableGutters disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: "35px" }}>
-                            <HomeIcon sx={{ color: "#fff" }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={
-                                <Typography textAlign="right" fontSize="20px">
-                                    صفحه ی اصلی
-                                </Typography>
-                            }
-                            sx={{ ml: "auto" }}
-                        />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disableGutters disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: "35px" }}>
-                            <Inventory2OutlinedIcon sx={{ color: "#fff" }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={
-                                <Typography textAlign="right" fontSize="20px">
-                                    محصولات
-                                </Typography>
-                            }
-                            sx={{ ml: "auto" }}
-                        />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disableGutters disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: "35px" }}>
-                            <InsertCommentOutlinedIcon sx={{ color: "#fff" }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={
-                                <Typography textAlign="right" fontSize="20px">
-                                    کامنت ها
-                                </Typography>
-                            }
-                            sx={{ ml: "auto" }}
-                        />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disableGutters disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: "35px" }}>
-                            <GroupOutlinedIcon sx={{ color: "#fff" }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={
-                                <Typography textAlign="right" fontSize="20px">
-                                    کاربران
-                                </Typography>
-                            }
-                            sx={{ ml: "auto" }}
-                        />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disableGutters disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: "35px" }}>
-                            <ViewQuiltOutlinedIcon sx={{ color: "#fff" }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={
-                                <Typography textAlign="right" fontSize="20px">
-                                    سفارشات
-                                </Typography>
-                            }
-                            sx={{ ml: "auto" }}
-                        />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disableGutters disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: "35px" }}>
-                            <LocalOfferOutlinedIcon sx={{ color: "#fff" }} />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={
-                                <Typography textAlign="right" fontSize="20px">
-                                    تخفیف ها
-                                </Typography>
-                            }
-                            sx={{ ml: "auto" }}
-                        />
-                    </ListItemButton>
-                </ListItem>
+                {allLinks.map((item) => (
+                    <ListItem disableGutters disablePadding key={item.text}>
+                        <ListItemButton component={NavLinkRouter} to={item.path}>
+                            <ListItemIcon sx={{ minWidth: "35px" }}>{item.icon}</ListItemIcon>
+                            <ListItemText
+                                primary={
+                                    <Typography textAlign="right" fontSize="20px">
+                                        {item.text}
+                                    </Typography>
+                                }
+                                sx={{ ml: "auto" }}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
             </List>
         </Box>
     );

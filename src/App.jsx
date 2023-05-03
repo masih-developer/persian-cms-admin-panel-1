@@ -4,10 +4,13 @@ import AppBar from "./components/Navbar";
 import SidebarWidth from "./data/SideBarWidth";
 import Sidebar from "./components/Sidebar/Sidebar";
 import DrawerProvider from "./context/DrawerContext";
+import { useRoutes } from "react-router-dom";
+import routes from "./routes";
 
 const drawerWidth = SidebarWidth;
 
 const App = () => {
+    const router = useRoutes(routes);
     return (
         <>
             <DrawerProvider>
@@ -24,7 +27,7 @@ const App = () => {
                             }}
                         >
                             <Toolbar />
-                            <Container></Container>
+                            <Container>{router}</Container>
                         </Box>
                     </Box>
                 </ThemeProvider>
