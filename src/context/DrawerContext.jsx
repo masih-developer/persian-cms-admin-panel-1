@@ -1,5 +1,3 @@
-import { PropTypes } from "prop-types";
-
 import { createContext, useState } from "react";
 
 export const DrawerContext = createContext();
@@ -15,7 +13,3 @@ const DrawerProvider = ({ children }) => {
 };
 
 export default DrawerProvider;
-
-DrawerProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-};

@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import PropTypes from "prop-types";
 
 const ErrorMsgBox = ({ errMsg }) => {
     return (
@@ -19,10 +18,6 @@ const ErrorMsgBox = ({ errMsg }) => {
             </Typography>
         </Box>
     );
-};
-
-ErrorMsgBox.propTypes = {
-    errMsg: PropTypes.string.isRequired,
 };
 
 export default ErrorMsgBox;
