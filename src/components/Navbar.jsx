@@ -117,6 +117,7 @@ const Navbar = () => {
                                 borderRadius: "4px",
                                 width: "350px",
                                 maxWidth: "100%",
+                                mr: { md: "auto" },
                             }}
                         >
                             <Box
