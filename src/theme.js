@@ -1,6 +1,12 @@
 import { createTheme } from "@mui/material";
 
 const theme = createTheme({
+    palette: {
+        background: {
+            default: "#f0f0f0",
+            box: "#1976d2",
+        },
+    },
     typography: {
         fontFamily: "Lalezar-Regular",
         h1: {
