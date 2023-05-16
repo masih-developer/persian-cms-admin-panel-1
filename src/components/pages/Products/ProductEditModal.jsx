@@ -1,8 +1,11 @@
 import { Box, Button, Typography, styled } from "@mui/material";
 import {
-    FormatItalicOutlined as FormatItalicOutlinedIcon,
-    ShoppingBagOutlined as ShoppingBagOutlinedIcon,
-    InsertPhotoOutlined as InsertPhotoOutlinedIcon,
+    DriveFileRenameOutlineOutlined as DriveFileRenameOutlineOutlinedIcon,
+    ProductionQuantityLimits as ProductionQuantityLimitsIcon,
+    ThumbUpOutlined as ThumbUpOutlinedIcon,
+    ColorLensOutlined as ColorLensOutlinedIcon,
+    LinkOutlined as LinkOutlinedIcon,
+    InsertChartOutlinedRounded as InsertChartOutlinedRoundedIcon,
     AttachMoneyOutlined as AttachMoneyOutlinedIcon,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
@@ -64,12 +67,81 @@ const ProductEditModal = ({ mainProduct, onSubmit }) => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <FormatItalicOutlinedIcon />
+                        <DriveFileRenameOutlineOutlinedIcon />
                     </Box>
                     <CustomInput
                         placeholder="عنوان جدید را وارد کنید..."
                         value={productNewTitle}
                         onChange={(e) => setProductNewTitle(e.target.value)}
+                    />
+                </Box>
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    bgcolor="background.default"
+                    borderRadius={1}
+                    overflow="hidden"
+                    sx={{ ":focus-within": { outline: "2px solid #d0d0d0" }, maxWidth: "100%" }}
+                >
+                    <Box
+                        width="40px"
+                        height="40px"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <ProductionQuantityLimitsIcon />
+                    </Box>
+                    <CustomInput
+                        placeholder="موجودی جدید را وارد کنید..."
+                        value={productNewCount}
+                        onChange={(e) => setProductNewCount(e.target.value)}
+                    />
+                </Box>
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    bgcolor="background.default"
+                    borderRadius={1}
+                    overflow="hidden"
+                    sx={{ ":focus-within": { outline: "2px solid #d0d0d0" }, maxWidth: "100%" }}
+                >
+                    <Box
+                        width="40px"
+                        height="40px"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <ThumbUpOutlinedIcon />
+                    </Box>
+                    <CustomInput
+                        placeholder="میزان محبوبیت جدید را وارد کنید..."
+                        value={productNewPopularity}
+                        onChange={(e) => setProductNewPopularity(e.target.value)}
+                    />
+                </Box>
+                <Box
+                    display="flex"
+                    alignItems="center"
+                    bgcolor="background.default"
+                    borderRadius={1}
+                    overflow="hidden"
+                    sx={{ ":focus-within": { outline: "2px solid #d0d0d0" }, maxWidth: "100%" }}
+                >
+                    <Box
+                        width="40px"
+                        height="40px"
+                        display="flex"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <ColorLensOutlinedIcon />
+                    </Box>
+                    <CustomInput
+                        placeholder="تعداد رنگ بندی جدید را وارد کنید..."
+                        value={productNewColors}
+                        onChange={(e) => setProductNewColors(e.target.value)}
                     />
                 </Box>
                 <Box
@@ -95,6 +167,7 @@ const ProductEditModal = ({ mainProduct, onSubmit }) => {
                         onChange={(e) => setProductNewPrice(e.target.value)}
                     />
                 </Box>
+
                 <Box
                     display="flex"
                     alignItems="center"
@@ -110,38 +183,16 @@ const ProductEditModal = ({ mainProduct, onSubmit }) => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <AttachMoneyOutlinedIcon />
+                        <LinkOutlinedIcon />
                     </Box>
                     <CustomInput
-                        placeholder="موجودی جدید را وارد کنید..."
-                        value={productNewCount}
-                        onChange={(e) => setProductNewCount(e.target.value)}
-                    />
-                </Box>
-                <Box
-                    display="flex"
-                    alignItems="center"
-                    bgcolor="background.default"
-                    borderRadius={1}
-                    overflow="hidden"
-                    sx={{ ":focus-within": { outline: "2px solid #d0d0d0" }, maxWidth: "100%" }}
-                >
-                    <Box
-                        width="40px"
-                        height="40px"
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                    >
-                        <FormatItalicOutlinedIcon />
-                    </Box>
-                    <CustomInput
-                        sx={{ direction: "ltr" }}
-                        placeholder="آدرس کاور جدید را وارد کنید..."
+                        sx={{ direction: "ltr", textAlign: "right" }}
+                        placeholder="...آدرس جدید کاور را وارد کنید"
                         value={productNewImg}
                         onChange={(e) => setProductNewImg(e.target.value)}
                     />
                 </Box>
+
                 <Box
                     display="flex"
                     alignItems="center"
@@ -157,30 +208,7 @@ const ProductEditModal = ({ mainProduct, onSubmit }) => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <FormatItalicOutlinedIcon />
-                    </Box>
-                    <CustomInput
-                        placeholder="میزان محبوبیت جدید را وارد کنید..."
-                        value={productNewPopularity}
-                        onChange={(e) => setProductNewPopularity(e.target.value)}
-                    />
-                </Box>
-                <Box
-                    display="flex"
-                    alignItems="center"
-                    bgcolor="background.default"
-                    borderRadius={1}
-                    overflow="hidden"
-                    sx={{ ":focus-within": { outline: "2px solid #d0d0d0" }, maxWidth: "100%" }}
-                >
-                    <Box
-                        width="40px"
-                        height="40px"
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                    >
-                        <ShoppingBagOutlinedIcon />
+                        <InsertChartOutlinedRoundedIcon />
                     </Box>
                     <CustomInput
                         placeholder="میزان فروش جدید را وارد کنید..."
@@ -188,29 +216,7 @@ const ProductEditModal = ({ mainProduct, onSubmit }) => {
                         onChange={(e) => setProductNewSale(e.target.value)}
                     />
                 </Box>
-                <Box
-                    display="flex"
-                    alignItems="center"
-                    bgcolor="background.default"
-                    borderRadius={1}
-                    overflow="hidden"
-                    sx={{ ":focus-within": { outline: "2px solid #d0d0d0" }, maxWidth: "100%" }}
-                >
-                    <Box
-                        width="40px"
-                        height="40px"
-                        display="flex"
-                        justifyContent="center"
-                        alignItems="center"
-                    >
-                        <InsertPhotoOutlinedIcon />
-                    </Box>
-                    <CustomInput
-                        placeholder="تعداد رنگ بندی جدید را وارد کنید..."
-                        value={productNewColors}
-                        onChange={(e) => setProductNewColors(e.target.value)}
-                    />
-                </Box>
+
                 <Button
                     variant="contained"
                     color="primary"
