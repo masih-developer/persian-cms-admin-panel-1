@@ -123,6 +123,19 @@ const Comments = () => {
                                             alignItems="center"
                                             gap={1}
                                         >
+                                            <Button variant="contained" color="info">
+                                                پاسخ
+                                            </Button>
+                                            <Button variant="contained" color="warning">
+                                                ویرایش
+                                            </Button>
+                                            <Button
+                                                variant="contained"
+                                                color="error"
+                                                sx={{ bgcolor: "error.light" }}
+                                            >
+                                                رد
+                                            </Button>
                                             <Button
                                                 variant="contained"
                                                 color="error"
@@ -132,15 +145,6 @@ const Comments = () => {
                                                 }}
                                             >
                                                 حذف
-                                            </Button>
-                                            <Button variant="contained" color="info">
-                                                ویرایش
-                                            </Button>
-                                            <Button variant="contained" color="success">
-                                                پاسخ
-                                            </Button>
-                                            <Button variant="contained" color="warning">
-                                                رد
                                             </Button>
                                         </Box>
                                     </TableCell>
@@ -171,7 +175,11 @@ const Comments = () => {
                 <Modal
                     onClose={() => setIsShowDeleteModal(false)}
                     open={isShowDeleteModal}
-                    sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
                 >
                     <Box bgcolor="white" borderRadius={1} p={3}>
                         <Typography component="h3" variant="h3" mb={4}>
