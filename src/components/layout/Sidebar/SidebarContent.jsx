@@ -76,7 +76,15 @@ const SidebarContent = () => {
             <List disablePadding sx={{ mt: "20px" }}>
                 {allLinks.map((item) => (
                     <ListItem disableGutters disablePadding key={item.text}>
-                        <ListItemButton component={NavLinkRouter} to={item.path}>
+                        <ListItemButton
+                            component={NavLinkRouter}
+                            style={({ isActive }) => {
+                                return {
+                                    backgroundColor: isActive ? "rgba(0,0,0,.2)" : "",
+                                };
+                            }}
+                            to={item.path}
+                        >
                             <ListItemIcon sx={{ minWidth: "35px" }}>{item.icon}</ListItemIcon>
                             <ListItemText
                                 primary={
