@@ -13,11 +13,16 @@ import { useEffect } from "react";
 import { useState } from "react";
 import DeleteModal from "../components/common/DeleteModal";
 import ErrorMsgBox from "../components/common/ErrorMsgBox";
+import UsersEditModal from "../components/pages/Users/UsersEditModal";
+import UserDetailsModal from "../components/pages/Users/UserDetailsModal";
 
 const Users = () => {
     const [allUsers, setAllusers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+    const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+    const [isOpenDetailsModal, setIsOpenDetailsModal] = useState(false);
+    const [mainUserInfo, setMainUserInfo] = useState({});
     const [mainUserID, setMainUserID] = useState(null);
 
     const getAllUsers = () => {
@@ -43,6 +48,22 @@ const Users = () => {
                 console.log(result);
                 getAllUsers();
                 setIsOpenDeleteModal(false);
+            });
+    };
+
+    const edtiUserInfoHandler = (userInfos) => {
+        fetch(`http://localhost:3000/api/users/${mainUserID}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userInfos),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                console.log(result);
+                getAllUsers();
+                setIsOpenEditModal(false);
             });
     };
 
@@ -114,10 +135,25 @@ const Users = () => {
                                             alignItems="center"
                                             gap={1}
                                         >
-                                            <Button variant="contained" color="primary">
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                onClick={() => {
+                                                    setMainUserInfo(user);
+                                                    setIsOpenDetailsModal(true);
+                                                }}
+                                            >
                                                 جزئیات
                                             </Button>
-                                            <Button variant="contained" color="warning">
+                                            <Button
+                                                variant="contained"
+                                                color="warning"
+                                                onClick={() => {
+                                                    setMainUserInfo(user);
+                                                    setMainUserID(user.id);
+                                                    setIsOpenEditModal(true);
+                                                }}
+                                            >
                                                 ویرایش
                                             </Button>
                                             <Button
@@ -143,6 +179,17 @@ const Users = () => {
                     onClose={() => setIsOpenDeleteModal(false)}
                     submitAction={deleteUserHandler}
                     cancelAction={() => setIsOpenDeleteModal(false)}
+                />
+                <UsersEditModal
+                    mainUser={mainUserInfo}
+                    open={isOpenEditModal}
+                    onClose={() => setIsOpenEditModal(false)}
+                    onSubmit={edtiUserInfoHandler}
+                />
+                <UserDetailsModal
+                    open={isOpenDetailsModal}
+                    onClose={() => setIsOpenDetailsModal(false)}
+                    mainUseInfo={mainUserInfo}
                 />
             </Box>
         );
